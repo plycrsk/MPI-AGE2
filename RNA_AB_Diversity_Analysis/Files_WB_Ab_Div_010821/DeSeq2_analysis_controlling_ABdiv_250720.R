@@ -50,10 +50,10 @@ data <- data[-1]
 
 dds <- DESeqDataSetFromMatrix(countData = data,
                               colData = meta_data,
-                              design = ~Q4.00 + age)
+                              design = ~age + Q4.00)
 
 dds <- DESeq(dds)
-contrast <- c('age', 'old', 'young')
-results <- results(dds, contrast = contrast)
-results
+#contrast <- c('age', 'old', 'young')
+#results <- results(dds, contrast = contrast)
+results <- results(dds)
 write.csv(results, "DiffExp_Q4.00_270721.csv")
