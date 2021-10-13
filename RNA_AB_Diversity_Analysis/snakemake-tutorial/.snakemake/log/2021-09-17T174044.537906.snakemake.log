@@ -1,0 +1,2 @@
+SyntaxError in line 16 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/snakemake-tutorial/Snakefile:
+Command must be given as string after the shell keyword. (Snakefile, line 16)
