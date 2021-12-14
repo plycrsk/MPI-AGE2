@@ -10,6 +10,9 @@ meta_data <- read.csv("meta_data_with_Qvalues_250721.csv")
 
 ## Running Analysis ##
 
+## Note: replace diversity order e.g. 'Q2.00' with desired diversity order ##
+## in DESeqDataSetFromMatrix function, and name output file suitably ##
+
 row.names(data) <- data$ensgene
 data <- data[-1]
 
@@ -28,20 +31,6 @@ results <- results(dds)
 #results %>% data.frame() %>% View()
 coeffs <- coef(dds)
 
-#write.csv(results, "DiffExp_age_plus_div_Q4.00_150821.csv")
-#write.csv(coeffs, "DiffExp_age_plus_div_Q4.00_coefficients_150821.csv")
+write.csv(results, "DiffExp_age_plus_div_Q2.00_150821.csv")
+write.csv(coeffs, "DiffExp_age_plus_div_Q2.00_coefficients_150821.csv")
 
-## summarising results ##
-
-padj.cutoff <- 0.05
-
-# Create a tibble of results
-results <- results %>%
-  data.frame() %>%
-  rownames_to_column(var="gene") %>% 
-  as_tibble()
-
-sigOE <- results %>%
-  filter(padj < padj.cutoff)
-
-write.csv(sigOE, "SignificantGenes_age_plus_div_Q4.00_170821.csv")
