@@ -3,7 +3,7 @@ library(GO.db)
 
 ## load enrichment output ## 
 
-data <- read.csv("Results/GSEA_Analysis/gsea_simplified_results_RemovedRedundantGenes_Q0.00_060921.csv")
+data <- read.csv("PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/DeSeq_Analysis_All_Models/Results/GSEA_Analysis/gsea_simplified_results_RemovedRedundantGenes_age_220921.csv")
 
 rownames(data) <- data$ID
 
@@ -99,5 +99,5 @@ for (ID in data$ID){
 #  data[ID,]$unlabeled_immune_terms <- ID%in% unlabeled_immune_terms
 #}
 
-write.csv(data, "Results/GSEA_Analysis/gsea_simplified_results_RemovedRedundantGenes_Q0.00_9GOterms_230921.csv")
+write.csv(data, "PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/DeSeq_Analysis_All_Models/Results/GSEA_Analysis/gsea_simplified_results_RemovedRedundantGenes_9GOterms__ageOnly_161121.csv")
 
