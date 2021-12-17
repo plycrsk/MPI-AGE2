@@ -1,0 +1,4 @@
+Building DAG of jobs...
+WildcardError in line 30 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile:
+Wildcards in input files cannot be determined from output files:
+'diversity'

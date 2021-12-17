@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 1 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile:
+Missing input files for rule DESeq:
+raw_data/rna_data_raw_counts.csvraw_data/meta_data_Q0.00.csv

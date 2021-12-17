@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 1 of https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/rules/align.smk:
+Missing input files for rule align:
+SRR5344335_pass_2.fastq.gz
+SRR5344335_pass_1.fastq.gz

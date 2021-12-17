@@ -1,0 +1,12 @@
+Building DAG of jobs...
+InputFunctionException in line 1 of https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/rules/align.smk:
+Error:
+  KeyError: 'fq1'
+Wildcards:
+  sample=SRR5344335
+  unit=lane1
+Traceback:
+  File "https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/rules/common.smk", line 109, in get_fq
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/series.py", line 942, in __getitem__
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/series.py", line 1051, in _get_value
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3363, in get_loc

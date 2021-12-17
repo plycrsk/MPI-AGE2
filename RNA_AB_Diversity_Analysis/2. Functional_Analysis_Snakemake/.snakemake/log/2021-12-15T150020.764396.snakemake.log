@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+GSEA         6              1              1
+total        6              1              1
+
+Select jobs to execute...
+
+[Wed Dec 15 15:00:20 2021]
+rule GSEA:
+    input: data/Q4.00.csv, raw_data/killifish_human_ortho.csv
+    output: data/GSEA/Q4.00.rda, data/GSEA/Q4.00.csv
+    jobid: 8
+    wildcards: diversity=Q4.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:00:29 2021]
+Error in rule GSEA:
+    jobid: 8
+    output: data/GSEA/Q4.00.rda, data/GSEA/Q4.00.csv
+
+RuleException:
+CalledProcessError in line 20 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile:
+Command 'set -euo pipefail;  Rscript --vanilla /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/scripts/tmpb74acfxk.2.GSEA_Analysis.R' returned non-zero exit status 1.
+  File "/home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile", line 20, in __rule_GSEA
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/log/2021-12-15T150020.764396.snakemake.log

@@ -1,0 +1,2 @@
+SyntaxError in line 5 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/workflow/Snakefile:
+Expecting rule keyword, comment or docstrings inside a rule definition. (Snakefile, line 5)

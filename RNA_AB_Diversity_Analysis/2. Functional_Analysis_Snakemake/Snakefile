@@ -1,0 +1,43 @@
+#ORDERS = ["0.00", "1.00", "1.50", "2.00". "3.00", "4.00"]
+
+rule all:
+    input:
+        "plots/UpregulatedTop10.pdf"
+
+rule DESeq:
+    input:
+        "raw_data/rna_data_raw_counts.csv",
+        "raw_data/meta_data_{diversity}.csv"
+    output:
+        "data/{diversity}.csv"
+    script:
+        "scripts/1.DESeq2_Analysis.R"
+
+rule GSEA:
+    input:
+        "data/{diversity}.csv",
+        "raw_data/killifish_human_ortho.csv"
+    output:
+        "data/GSEA/{diversity}.rda",
+        "data/GSEA/{diversity}.csv"
+    script:
+        "scripts/2.GSEA_Analysis.R"
+
+rule Immune_Term_Reduction:
+    input:
+        "data/GSEA/{diversity}.csv"
+    output:
+        "data/GSEA/GSEA_Results_ImmuneTerms_{diversity}.csv"
+    script:
+        "scripts/3.GO_Term_Reduction.R"
+
+#rule Dotplots:
+#    input:
+#        csv=expand("data/GSEA/GSEA_Results_ImmuneTerms_{order}.csv", order=ORDERS)
+#    output:
+#        "plots/UpregulatedTop10.pdf"
+#        "plots/UpregulatedTop10.png"
+#        "plots/DownregulatedTop10.pdf"
+#        "plots/DownregulatedTop10.png"
+#    script:
+#        "scripts/4.Dotplots.R"

@@ -1,0 +1,39 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+DESeq        6              1              1
+total        6              1              1
+
+Select jobs to execute...
+
+[Wed Dec 15 14:44:45 2021]
+rule DESeq:
+    input: raw_data/rna_data_raw_counts.csv, raw_data/meta_data_Q4.00.csv
+    output: data/Q4.00.csv
+    jobid: 4
+    wildcards: diversity=Q4.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 14:44:45 2021]
+Error in rule DESeq:
+    jobid: 4
+    output: data/Q4.00.csv
+
+RuleException:
+URLError in line 10 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile:
+<urlopen error [Errno 2] No such file or directory: '/home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/scripts/DESeq2_Analysis.R'>
+  File "/home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile", line 10, in __rule_DESeq
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/urllib/request.py", line 222, in urlopen
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/urllib/request.py", line 525, in open
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/urllib/request.py", line 542, in _open
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/urllib/request.py", line 502, in _call_chain
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/urllib/request.py", line 1485, in file_open
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/urllib/request.py", line 1524, in open_local_file
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/log/2021-12-15T144445.094532.snakemake.log

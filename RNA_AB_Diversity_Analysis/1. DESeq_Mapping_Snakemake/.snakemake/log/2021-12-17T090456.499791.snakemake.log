@@ -1,0 +1,17 @@
+Building DAG of jobs...
+InputFunctionException in line 1 of https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/rules/align.smk:
+Error:
+  KeyError: "None of [Index(['fq1', 'fq2'], dtype='object')] are in the [columns]"
+Wildcards:
+  sample=SRR5344335
+  unit=lane1
+Traceback:
+  File "https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/rules/common.smk", line 108, in get_fq
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 925, in __getitem__
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 1100, in _getitem_tuple
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 822, in _getitem_lowerdim
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 906, in _getitem_nested_tuple
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 1153, in _getitem_axis
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 1093, in _getitem_iterable
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 1314, in _get_listlike_indexer
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/indexing.py", line 1374, in _validate_read_indexer

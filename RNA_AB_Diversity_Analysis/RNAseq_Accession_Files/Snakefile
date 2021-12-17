@@ -1,0 +1,13 @@
+configfile: "config/config.yaml"
+
+
+# declare https://github.com/snakemake-workflows/rna-seq-star-deseq2 as a module
+module rna_seq_star_deseq2:
+    snakefile: 
+        "https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.1.2/workflow/Snakefile"
+    config:
+        config
+
+
+# use all rules from https://github.com/snakemake-workflows/rna-seq-star-deseq2
+use rule * from rna_seq_star_deseq2

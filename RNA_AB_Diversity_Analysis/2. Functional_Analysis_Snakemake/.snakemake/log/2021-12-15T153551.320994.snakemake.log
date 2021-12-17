@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                      count    min threads    max threads
+---------------------  -------  -------------  -------------
+Immune_Term_Reduction        6              1              1
+total                        6              1              1
+
+Select jobs to execute...
+
+[Wed Dec 15 15:35:51 2021]
+rule Immune_Term_Reduction:
+    input: data/GSEA/Q2.00.csv
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q2.00.csv
+    jobid: 12
+    wildcards: diversity=Q2.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:35:56 2021]
+Error in rule Immune_Term_Reduction:
+    jobid: 12
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q2.00.csv
+
+RuleException:
+CalledProcessError in line 28 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile:
+Command 'set -euo pipefail;  Rscript --vanilla /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/scripts/tmp0ldvhxro.3.GO_Term_Reduction.R' returned non-zero exit status 1.
+  File "/home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile", line 28, in __rule_Immune_Term_Reduction
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/log/2021-12-15T153551.320994.snakemake.log

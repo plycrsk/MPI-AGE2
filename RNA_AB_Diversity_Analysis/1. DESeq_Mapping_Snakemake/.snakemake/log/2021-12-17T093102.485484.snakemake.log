@@ -1,0 +1,13 @@
+FileNotFoundError in line 31 of https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/rules/common.smk:
+[Errno 2] No such file or directory: 'config/units.tsv'
+  File "/home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/DESeq_Mapping/workflow/Snakefile", line 20, in <module>
+  File "https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/Snakefile", line 25, in <module>
+  File "https://github.com/snakemake-workflows/rna-seq-star-deseq2/raw/v1.2.0/workflow/rules/common.smk", line 31, in <module>
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/io/parsers/base_parser.py", line 222, in _open_handles
+  File "/home/plycrsk/anaconda3/envs/snakemake/lib/python3.10/site-packages/pandas/io/common.py", line 702, in get_handle

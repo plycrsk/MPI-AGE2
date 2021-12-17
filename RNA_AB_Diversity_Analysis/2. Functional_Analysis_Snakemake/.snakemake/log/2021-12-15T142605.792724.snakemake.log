@@ -1,0 +1,32 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+DESeq        1              1              1
+total        1              1              1
+
+Select jobs to execute...
+
+[Wed Dec 15 14:26:05 2021]
+rule DESeq:
+    input: raw_data/rna_data_raw_counts.csv, raw_data/meta_data_Q0.00.csv
+    output: data/Q0.00.csv
+    jobid: 0
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 14:26:06 2021]
+Error in rule DESeq:
+    jobid: 0
+    output: data/Q0.00.csv
+
+RuleException:
+CalledProcessError in line 8 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile:
+Command 'set -euo pipefail;  Rscript --vanilla /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/scripts/tmp4f4p69oa.snake.R' returned non-zero exit status 1.
+  File "/home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/Snakefile", line 8, in __rule_DESeq
+  File "/home/plycrsk/anaconda3/envs/snakemake-tutorial/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/log/2021-12-15T142605.792724.snakemake.log

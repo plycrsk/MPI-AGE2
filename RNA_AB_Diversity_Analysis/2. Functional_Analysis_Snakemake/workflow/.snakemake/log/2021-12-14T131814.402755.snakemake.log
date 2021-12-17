@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 3 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/workflow/Snakefile:
+Missing input files for rule all:
+data/0.00 1.00 1.50 2.00 3.00 4.00

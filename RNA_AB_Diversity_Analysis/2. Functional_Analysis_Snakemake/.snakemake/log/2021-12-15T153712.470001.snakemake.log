@@ -1,0 +1,89 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                      count    min threads    max threads
+---------------------  -------  -------------  -------------
+Immune_Term_Reduction        6              1              1
+total                        6              1              1
+
+Select jobs to execute...
+
+[Wed Dec 15 15:37:12 2021]
+rule Immune_Term_Reduction:
+    input: data/GSEA/Q4.00.csv
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q4.00.csv
+    jobid: 12
+    wildcards: diversity=Q4.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:37:17 2021]
+Finished job 12.
+1 of 6 steps (17%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:37:17 2021]
+rule Immune_Term_Reduction:
+    input: data/GSEA/Q2.00.csv
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q2.00.csv
+    jobid: 9
+    wildcards: diversity=Q2.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:37:22 2021]
+Finished job 9.
+2 of 6 steps (33%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:37:22 2021]
+rule Immune_Term_Reduction:
+    input: data/GSEA/Q1.50.csv
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q1.50.csv
+    jobid: 6
+    wildcards: diversity=Q1.50
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:37:27 2021]
+Finished job 6.
+3 of 6 steps (50%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:37:27 2021]
+rule Immune_Term_Reduction:
+    input: data/GSEA/Q3.00.csv
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q3.00.csv
+    jobid: 0
+    wildcards: diversity=Q3.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:37:35 2021]
+Finished job 0.
+4 of 6 steps (67%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:37:35 2021]
+rule Immune_Term_Reduction:
+    input: data/GSEA/Q1.00.csv
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q1.00.csv
+    jobid: 3
+    wildcards: diversity=Q1.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:37:41 2021]
+Finished job 3.
+5 of 6 steps (83%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:37:41 2021]
+rule Immune_Term_Reduction:
+    input: data/GSEA/Q0.00.csv
+    output: data/GSEA/GSEA_Results_ImmuneTerms_Q0.00.csv
+    jobid: 15
+    wildcards: diversity=Q0.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:37:46 2021]
+Finished job 15.
+6 of 6 steps (100%) done
+Complete log: /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/log/2021-12-15T153712.470001.snakemake.log

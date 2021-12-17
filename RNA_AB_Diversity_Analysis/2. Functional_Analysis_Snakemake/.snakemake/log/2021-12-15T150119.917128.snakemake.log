@@ -1,0 +1,89 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+GSEA         6              1              1
+total        6              1              1
+
+Select jobs to execute...
+
+[Wed Dec 15 15:01:20 2021]
+rule GSEA:
+    input: data/Q3.00.csv, raw_data/killifish_human_ortho.csv
+    output: data/GSEA/Q3.00.rda, data/GSEA/Q3.00.csv
+    jobid: 10
+    wildcards: diversity=Q3.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:02:58 2021]
+Finished job 10.
+1 of 6 steps (17%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:02:58 2021]
+rule GSEA:
+    input: data/Q1.50.csv, raw_data/killifish_human_ortho.csv
+    output: data/GSEA/Q1.50.rda, data/GSEA/Q1.50.csv
+    jobid: 4
+    wildcards: diversity=Q1.50
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:04:54 2021]
+Finished job 4.
+2 of 6 steps (33%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:04:54 2021]
+rule GSEA:
+    input: data/Q1.00.csv, raw_data/killifish_human_ortho.csv
+    output: data/GSEA/Q1.00.rda, data/GSEA/Q1.00.csv
+    jobid: 8
+    wildcards: diversity=Q1.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:06:36 2021]
+Finished job 8.
+3 of 6 steps (50%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:06:36 2021]
+rule GSEA:
+    input: data/Q4.00.csv, raw_data/killifish_human_ortho.csv
+    output: data/GSEA/Q4.00.rda, data/GSEA/Q4.00.csv
+    jobid: 0
+    wildcards: diversity=Q4.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:08:07 2021]
+Finished job 0.
+4 of 6 steps (67%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:08:07 2021]
+rule GSEA:
+    input: data/Q0.00.csv, raw_data/killifish_human_ortho.csv
+    output: data/GSEA/Q0.00.rda, data/GSEA/Q0.00.csv
+    jobid: 2
+    wildcards: diversity=Q0.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:09:59 2021]
+Finished job 2.
+5 of 6 steps (83%) done
+Select jobs to execute...
+
+[Wed Dec 15 15:09:59 2021]
+rule GSEA:
+    input: data/Q2.00.csv, raw_data/killifish_human_ortho.csv
+    output: data/GSEA/Q2.00.rda, data/GSEA/Q2.00.csv
+    jobid: 6
+    wildcards: diversity=Q2.00
+    resources: tmpdir=/tmp
+
+[Wed Dec 15 15:12:37 2021]
+Finished job 6.
+6 of 6 steps (100%) done
+Complete log: /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/Snakemake_Trial/.snakemake/log/2021-12-15T150119.917128.snakemake.log

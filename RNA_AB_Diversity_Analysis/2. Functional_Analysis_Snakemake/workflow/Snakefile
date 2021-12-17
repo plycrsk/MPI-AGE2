@@ -1,0 +1,14 @@
+groups = "0.00 1.00 1.50 2.00 3.00 4.00"
+
+rule all:
+    input:
+        expand('raw_data/meta_data_Q{group}.csv', group=groups.split(' '))
+
+rule DESeq:
+    input: 
+	"raw_data/rna_data_raw_counts.csv"
+	"raw_data/meta_data_Q{group}.csv"
+    output:
+        "data/test.{group}.csv"
+    script:
+        "1.DESeq2_Analysis.R"

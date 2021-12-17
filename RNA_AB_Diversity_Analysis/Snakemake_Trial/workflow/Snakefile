@@ -1,7 +1,0 @@
-rule DESeq:
-	input: 
-	"raw_data/meta_data_Q{group}.csv"
-	output:
-	"data/test.{group}.csv
-	script:
-	"1.DESeq2_Analysis_snake.R"
