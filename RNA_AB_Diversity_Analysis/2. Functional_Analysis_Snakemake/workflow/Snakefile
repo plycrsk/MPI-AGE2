@@ -5,10 +5,27 @@ rule all:
         expand('raw_data/meta_data_Q{group}.csv', group=groups.split(' '))
 
 rule DESeq:
-    input: 
-	"raw_data/rna_data_raw_counts.csv"
-	"raw_data/meta_data_Q{group}.csv"
+    input:
+	   "raw_data/rna_data_raw_counts.csv"
+	      "raw_data/meta_data_Q{group}.csv"
     output:
-        "data/test.{group}.csv"
+        "data/Q{group}.csv"
     script:
         "1.DESeq2_Analysis.R"
+
+rule GSEA:
+    input:
+        "data/Q{group}.csv"
+    output:
+        "GSEA/Q{group}.rda"
+        "GSEA/Q{group}.csv"
+    script:
+        "2.GSEA_Analysis.R"
+
+rule GO_reduction:
+    input:
+        "data/Q{group}.csv"
+    output:
+        "data/GSEA_Results_ImmuneTerms_Q{group}.csv"
+    script:
+        "3.GO_Term_Reduction.R"

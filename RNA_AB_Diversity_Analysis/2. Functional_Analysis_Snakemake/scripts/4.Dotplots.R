@@ -18,7 +18,7 @@ dot_df_up <- ego_summary[ego_summary$type == "Upregulated", ][1:10,]
 dot_df_down <- ego_summary[ego_summary$type == "Downregulated", ][1:10,]
 
 
-ego_summary2 <- read.csv(snakemake@input[[1]])
+ego_summary2 <- read.csv(snakemake@input[[2]])
 ego_summary2 <- ego_summary2[order(-abs(ego_summary2$NES)),]
 ego_summary2$Q = "1.00"
 ego_summary2$type[ego_summary2$NES < 0] = "Downregulated"
@@ -27,7 +27,7 @@ ego_summary2$type[ego_summary2$NES > 0] = "Upregulated"
 dot_df2_up <- ego_summary2[ego_summary2$type == "Upregulated", ][1:10,]
 dot_df2_down <- ego_summary2[ego_summary2$type == "Downregulated", ][1:10,]
 
-ego_summary3 <- read.csv(snakemake@input[[1]])
+ego_summary3 <- read.csv(snakemake@input[[3]])
 ego_summary3 <- ego_summary3[order(-abs(ego_summary3$NES)),]
 ego_summary3$Q = "1.50"
 ego_summary3$type[ego_summary3$NES < 0] = "Downregulated"
@@ -36,7 +36,7 @@ ego_summary3$type[ego_summary3$NES > 0] = "Upregulated"
 dot_df3_up <- ego_summary3[ego_summary3$type == "Upregulated", ][1:10,]
 dot_df3_down <- ego_summary3[ego_summary3$type == "Downregulated", ][1:10,]
 
-ego_summary4 <- read.csv(snakemake@input[[1]])
+ego_summary4 <- read.csv(snakemake@input[[4]])
 ego_summary4 <- ego_summary4[order(-abs(ego_summary4$NES)),]
 ego_summary4$Q = "2.00"
 ego_summary4$type[ego_summary4$NES < 0] = "Downregulated"
@@ -45,7 +45,7 @@ ego_summary4$type[ego_summary4$NES > 0] = "Upregulated"
 dot_df4_up <- ego_summary4[ego_summary4$type == "Upregulated", ][1:10,]
 dot_df4_down <- ego_summary4[ego_summary4$type == "Downregulated", ][1:10,]
 
-ego_summary5 <- read.csv("snakemake@input[[1]]")
+ego_summary5 <- read.csv(snakemake@input[[5]])
 ego_summary5 <- ego_summary5[order(-abs(ego_summary5$NES)),]
 ego_summary5$Q = "3.00"
 ego_summary5$type[ego_summary5$NES < 0] = "Downregulated"
@@ -54,7 +54,7 @@ ego_summary5$type[ego_summary5$NES > 0] = "Upregulated"
 dot_df5_up <- ego_summary5[ego_summary5$type == "Upregulated", ][1:10,]
 dot_df5_down <- ego_summary5[ego_summary5$type == "Downregulated", ][1:10,]
 
-ego_summary6 <- read.csv(snakemake@input[[1]])
+ego_summary6 <- read.csv(snakemake@input[[6]])
 ego_summary6 <- ego_summary6[order(-abs(ego_summary6$NES)),]
 ego_summary6$Q = "4.00"
 ego_summary6$type[ego_summary6$NES < 0] = "Downregulated"
@@ -109,7 +109,7 @@ dot_df_down[is.na(dot_df_down)] <- "Non-Immune"
 ## Toll-like 9 receptor signalling pathway does not pull correctly as immune from GO, ##
 ## so adding manually ##  
 
-dot_df_up[dot_df_up$Description == "toll-like receptor 9 signaling pathway",]$Immune <- "Immune"
+#dot_df_up[dot_df_up$Description == "toll-like receptor 9 signaling pathway",]$Immune <- "Immune"
  
 X11()
 p <- ggplot(dot_df_up, aes(x = NES, y = fct_reorder(Description, NES))) + 
@@ -120,10 +120,10 @@ p <- ggplot(dot_df_up, aes(x = NES, y = fct_reorder(Description, NES))) +
 
 p + facet_grid(.~Q)
 
-dev.copy2pdf(file = snakemake@output[[1]])
+#dev.copy2pdf(file = snakemake@output[[1]])
 
 ggsave(
-  snakemake@output[[2]],
+  snakemake@output[[1]],
   plot = last_plot(),
   device = NULL,
   path = NULL,
@@ -149,11 +149,10 @@ p <- ggplot(dot_df_down, aes(x = NES, y = fct_reorder(Description, NES))) +
 p + facet_grid(.~Q)
 
 
-
-dev.copy2pdf(file = snakemake@output[[3]])
+#dev.copy2pdf(file = snakemake@output[[3]])
 
 ggsave(
-  snakemake@output[[4]],
+  snakemake@output[[2]],
   plot = last_plot(),
   device = NULL,
   path = NULL,

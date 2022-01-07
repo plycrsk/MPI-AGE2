@@ -23,9 +23,13 @@ plot_ratio_all <- 2/3
 top_buffer_x <- 0.05
 
 # Specify input paths
-in_paths <- sapply(q_values_str, function(q)
-  paste0("functional/data/gut/2021-10-25_gsea-results-q", q, ".csv"))
-in_path_age <- "functional/data/gut/2021-11-21_gsea-results-age-only.csv"
+#in_paths <- c["what", "what2"]
+#in_paths <- c[snakemake@input[[1]], snakemake@input[[2]],
+              snakemake@input[[3]], snakemake@input[[4]],
+              snakemake@input[[5]], snakemake@input[[6]]]
+#in_paths <- sapply(q_values_str, function(q)
+#  paste0("raw_data/2021-10-25_gsea-results-q", q, ".csv"))
+in_path_age <- "raw_data/2021-11-21_gsea-results-age-only.csv"
 
 # Specify output paths
 out_path_robust <- "functional/out/gut_gsea_robust.csv"
@@ -86,7 +90,8 @@ theme_base <-   theme_bw() + theme(
 
 # Import data
 n_sets <- length(in_paths)
-gsea_data_raw <- lapply(in_paths, function(x) read_csv(x, col_types = cols()))
+#gsea_data_raw <- lapply(in_paths, function(x) read_csv(x, col_types = cols()))
+gsea_data_raw <- lapply(snakemake[[1]], snakemake[[2]], function(x) read_csv(x, col_types = cols()))
 gsea_data_age_raw <- read_csv(in_path_age, col_types = cols())
 
 # Annotate with diversity orders
@@ -311,7 +316,7 @@ g_age_all_neg <- ggplot(gsea_data_all_neg, aes(x=NES_rank_sign, y=NES)) +
 #==============================================================================
 
 # Table of robust terms
-write_csv(gsea_data_robust_summ, out_path_robust)
+write_csv(gsea_data_robust_summ, snakemake@output[[1]])
 
 # Plots
 save_fig <- function(path, plot, plot_height, plot_width = 11, device="png"){
@@ -320,11 +325,11 @@ save_fig <- function(path, plot, plot_height, plot_width = 11, device="png"){
          height = plot_height, units = "cm", dpi = 320, limitsize=FALSE)
 }
 
-save_fig(out_path_top_pos, g_top_pos,
+save_fig(out_path_top_pos, snakemake@output[[2]],
          plot_width * plot_ratio_top, plot_width)
-save_fig(out_path_top_neg, g_top_neg,
+save_fig(out_path_top_neg, snakemake@output[[3]],
          plot_width * plot_ratio_top, plot_width)
-save_fig(out_path_all_pos, g_all_pos,
+save_fig(out_path_all_pos, snakemake@output[[4]],
          plot_width * plot_ratio_all, plot_width)
-save_fig(out_path_all_neg, g_all_neg,
+save_fig(out_path_all_neg, snakemake@output[[5]],
          plot_width * plot_ratio_all, plot_width)
