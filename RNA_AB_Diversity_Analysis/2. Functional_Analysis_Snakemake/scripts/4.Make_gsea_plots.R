@@ -9,11 +9,11 @@ library(patchwork)
 # Specify parameters
 q_values_raw <- c(0, 1, 1.5, 2, 3, 4)
 q_values_str <- format(q_values_raw, nsmall=2)
-immune_cols <- c("immune_system_processes", "defense_response",
-                 "regulation_of_immune_system_processes",
-                 "regulation_of_defense_response",
+immune_cols <- c("immune_system_processes", "regulation_of_immune_system_processes",
                  "immune_response_regulating_signaling_pathway",
-                 "cytokine_production", "cytokine_mediated_signaling_pathway",
+                 "cytokine_production",
+                 "cytokine_mediated_signaling_pathway",
+                 "defense_response", "regulation_of_defense_response",
                  "leukocyte_proliferation")
 
 n_top <- 10 # Number of top GO terms to display for each diversity order
@@ -23,20 +23,16 @@ plot_ratio_all <- 2/3
 top_buffer_x <- 0.05
 
 # Specify input paths
-#in_paths <- c["what", "what2"]
-#in_paths <- c[snakemake@input[[1]], snakemake@input[[2]],
-              snakemake@input[[3]], snakemake@input[[4]],
-              snakemake@input[[5]], snakemake@input[[6]]]
+in_paths <- unlist(snakemake@input)
 #in_paths <- sapply(q_values_str, function(q)
 #  paste0("raw_data/2021-10-25_gsea-results-q", q, ".csv"))
-in_path_age <- "raw_data/2021-11-21_gsea-results-age-only.csv"
 
 # Specify output paths
-out_path_robust <- "functional/out/gut_gsea_robust.csv"
-out_path_top_pos <- "functional/out/gut_gsea_top_pos.png"
-out_path_top_neg <- "functional/out/gut_gsea_top_neg.png"
-out_path_all_pos <- "functional/out/gut_gsea_all_pos.png"
-out_path_all_neg <- "functional/out/gut_gsea_all_neg.png"
+out_path_robust <- snakemake@output[["robust"]]
+out_path_top_pos <- snakemake@output[["top_pos"]]
+out_path_top_neg <- snakemake@output[["top_neg"]]
+out_path_all_pos <- snakemake@output[["all_pos"]]
+out_path_all_neg <- snakemake@output[["all_neg"]]
 
 #------------------------------------------------------------------------------
 # Fonts
@@ -90,9 +86,7 @@ theme_base <-   theme_bw() + theme(
 
 # Import data
 n_sets <- length(in_paths)
-#gsea_data_raw <- lapply(in_paths, function(x) read_csv(x, col_types = cols()))
-gsea_data_raw <- lapply(snakemake[[1]], snakemake[[2]], function(x) read_csv(x, col_types = cols()))
-gsea_data_age_raw <- read_csv(in_path_age, col_types = cols())
+gsea_data_raw <- lapply(in_paths, function(x) read_csv(x, col_types = cols()))
 
 # Annotate with diversity orders
 n_sets <- length(in_paths)
@@ -102,29 +96,40 @@ gsea_data_div <- lapply(1:n_sets, function(n)
 
 # Collate & filter columns
 fix_columns <- function(tab){
-  tab %>% select(-X1, -X, -setSize, -enrichmentScore, -rank, -leading_edge,
+  tab %>% select(-1, -X, -setSize, -enrichmentScore, -rank, -leading_edge,
                  -core_enrichment) %>% # Drop unused columns
     mutate(go_number = as.numeric(sub("GO:", "", ID))) # Extract GO term numbers (for arbitrary tiebreaking))
 }
 gsea_data <- bind_rows(gsea_data_div) %>% fix_columns
-gsea_data_age <- gsea_data_age_raw %>% fix_columns
 
 #==============================================================================
 # Identify all immune terms
 #==============================================================================
 
+
+
+#gsea_data <- as.list(gsea_data)
+
 collate_immune <- function(tab, cols = immune_cols){
   is_immune_vec <- rep(FALSE, nrow(tab))
+  #print(typeof(is_immune_vec | gsea_data[["defense_response"]]))
+  #print(is_immune_vec)
+  #print(length(is_immune_vec))
+  #xprint(typeof(is_immune_vec))
   for (col in cols){
+    print(gsea_data[col])
+    print(length(gsea_data[col]))
     is_immune_vec <- is_immune_vec | tab[[col]]
+    #print(is_immune_vec)
   }
+  print(length(is_immune_vec))
   tab_immune <- mutate(tab, is_immune = is_immune_vec)
   for (col in cols){tab_immune[[col]] <- NULL}
   return(tab_immune)
 }
 
+
 gsea_data_immune <- collate_immune(gsea_data)
-gsea_data_age_immune <- collate_immune(gsea_data_age)
 
 #==============================================================================
 # Separate positive and negative terms and rank by NES
@@ -140,7 +145,6 @@ rank_nes <- function(tab){
     ungroup
 }
 gsea_data_nes <- gsea_data_immune %>% group_by(diversity_order) %>% rank_nes
-gsea_data_age_nes <- gsea_data_age_immune %>% ungroup %>% rank_nes
 
 #==============================================================================
 # Identify robustly enriched terms (in diversity-order data)
@@ -278,45 +282,11 @@ g_top_neg <- ggplot(gsea_data_top_neg, aes(x=NES, y=label, colour=immune_lab)) +
   theme_stack
 
 #==============================================================================
-# Age model plots
-#==============================================================================
-
-# Prepare data
-gsea_data_age_all <- gsea_data_age_nes %>%
-  mutate(immune_lab = ifelse(is_immune, "Immune terms", "Non-immune terms"),
-         immune_lab = factor(immune_lab, levels = rev(c("Immune terms", "Non-immune terms"))))
-gsea_data_age_all_pos <- filter(gsea_data_age_all, NES_pos)
-gsea_data_age_all_neg <- filter(gsea_data_age_all, !NES_pos)
-
-# Positively enriched
-g_age_all_pos <- ggplot(gsea_data_age_all_pos, aes(x=NES_rank_sign, y=NES)) +
-  geom_vline(xintercept = 10, linetype = "dotted", colour = "red", size = 0.5) +
-  geom_line(colour = last(palette_immune)) +
-  geom_point(aes(colour = immune_lab)) +
-  scale_x_continuous(name = "Rank", breaks = seq(0,1000,10), limits = c(0,100)) + 
-  scale_y_continuous(name = "Normalised Enrichment Score") +
-  scale_colour_immune() +
-  theme_all
-
-# Negatively enriched
-g_age_all_neg <- ggplot(gsea_data_all_neg, aes(x=NES_rank_sign, y=NES)) +
-  geom_vline(xintercept = 10, linetype = "dotted", colour = "red", size = 0.5) +
-  geom_line(aes(group = diversity_order), colour = last(palette_immune)) +
-  geom_point(aes(colour = immune_lab)) +
-  facet_grid(diversity_order ~ ., 
-             labeller = labeller(diversity_order = as_labeller(function(x) paste0("q = ", x)))) +
-  scale_x_continuous(name = "Rank", breaks = seq(0,1000,10), limits = c(0,100)) + 
-  scale_y_continuous(name = "Normalised Enrichment Score") +
-  scale_colour_immune() +
-  theme_all
-
-
-#==============================================================================
 # SAVE OUTPUT
 #==============================================================================
 
 # Table of robust terms
-write_csv(gsea_data_robust_summ, snakemake@output[[1]])
+write_csv(gsea_data_robust_summ, out_path_robust)
 
 # Plots
 save_fig <- function(path, plot, plot_height, plot_width = 11, device="png"){
@@ -325,11 +295,11 @@ save_fig <- function(path, plot, plot_height, plot_width = 11, device="png"){
          height = plot_height, units = "cm", dpi = 320, limitsize=FALSE)
 }
 
-save_fig(out_path_top_pos, snakemake@output[[2]],
+save_fig(out_path_top_pos, g_top_pos,
          plot_width * plot_ratio_top, plot_width)
-save_fig(out_path_top_neg, snakemake@output[[3]],
+save_fig(out_path_top_neg, g_top_neg,
          plot_width * plot_ratio_top, plot_width)
-save_fig(out_path_all_pos, snakemake@output[[4]],
+save_fig(out_path_all_pos, g_all_pos,
          plot_width * plot_ratio_all, plot_width)
-save_fig(out_path_all_neg, snakemake@output[[5]],
+save_fig(out_path_all_neg, g_all_neg,
          plot_width * plot_ratio_all, plot_width)

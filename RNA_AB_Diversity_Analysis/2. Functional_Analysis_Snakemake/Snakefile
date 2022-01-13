@@ -1,15 +1,17 @@
 ORDERS = ["Q0.00","Q1.00","Q1.50","Q2.00","Q3.00","Q4.00"]
 
+#configfile: "config.yaml"
+
 rule all:
     input:
 #        "plots/test.pdf"
-        "plots/UpregulatedTop10.png",
-        "plots/DownregulatedTop10.png"
-#        "plots/gut_gsea_robust.csv",
-#        "plots/gut_gsea_top_pos.png",
-#        "plots/gut_gsea_top_neg.png",
-#        "plots/gut_gsea_all_pos.png",
-#        "plots/gut_gsea_all_neg.png"
+#        "plots/UpregulatedTop10.png",
+#        "plots/DownregulatedTop10.png"
+        "plots/gut_gsea_robust.csv",
+        "plots/gut_gsea_top_pos.png",
+        "plots/gut_gsea_top_neg.png",
+        "plots/gut_gsea_all_pos.png",
+        "plots/gut_gsea_all_neg.png"
 
 rule DESeq:
     input:
@@ -38,31 +40,14 @@ rule Immune_Term_Reduction:
     script:
         "scripts/3.GO_Term_Reduction.R"
 
-#rule Test:
-#    input:
-#        expand("data/GSEA_reduction/{diversity}.csv", diversity=ORDERS)
-#    output:
-#        "plots/test.pdf"
-#    script:
-#        "scripts/5.test.R"
-
-rule Plots:
+rule GSEA_plots:
     input:
         expand("data/GSEA_reduction/{diversity}.csv", diversity=ORDERS)
     output:
-        "plots/UpregulatedTop10.png",
-        "plots/DownregulatedTop10.png"
+        robust = "plots/gut_gsea_robust.csv",
+        top_pos = "plots/gut_gsea_top_pos.png",
+        top_neg = "plots/gut_gsea_top_neg.png",
+        all_pos = "plots/gut_gsea_all_pos.png",
+        all_neg = "plots/gut_gsea_all_neg.png"
     script:
-        "scripts/4.Dotplots.R"
-
-#rule GSEA_plots:
-#    input:
-#        expand("data/GSEA_reduction/{diversity}.csv", diversity=ORDERS)
-#    output:
-#        "plots/gut_gsea_robust.csv",
-#        "plots/gut_gsea_top_pos.png",
-#        "plots/gut_gsea_top_neg.png",
-#        "plots/gut_gsea_all_pos.png",
-#        "plots/gut_gsea_all_neg.png"
-#    script:
-#        "scripts/4.Make_gsea_plots.R"
+        "scripts/4.Make_gsea_plots.R"

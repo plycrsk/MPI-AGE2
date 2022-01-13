@@ -48,6 +48,8 @@ foldchanges <- sort(foldchanges, decreasing = TRUE)
 
 head(foldchanges)
 
+seed = 888888
+
 # GSEA using gene sets associated with BP Gene Ontology terms
 gseaGO <-gseGO(
   foldchanges,

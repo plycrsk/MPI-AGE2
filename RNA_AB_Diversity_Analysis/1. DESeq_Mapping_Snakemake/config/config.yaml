@@ -15,7 +15,7 @@ ref:
   build: Nfu_20140520
 
 trimming:
-  activate: False
+  activate: True
 
 mergeReads:
   activate: False
