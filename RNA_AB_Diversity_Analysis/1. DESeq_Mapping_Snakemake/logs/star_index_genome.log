@@ -1,0 +1,4 @@
+	STAR --runMode genomeGenerate --sjdbGTFfile resources/genome.gtf --sjdbOverhang 100 --runThreadN 1 --genomeDir resources/star_genome --genomeFastaFiles resources/genome.fasta
+	STAR version: 2.7.10a   compiled: 2022-01-14T18:50:00-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
+Jan 16 21:43:22 ..... started STAR run
+Jan 16 21:43:22 ... starting to generate Genome files

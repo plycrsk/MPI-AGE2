@@ -27,4 +27,5 @@
 *.gtf
 *.tmp
 *.fastq
+*.fasta
 *.sra

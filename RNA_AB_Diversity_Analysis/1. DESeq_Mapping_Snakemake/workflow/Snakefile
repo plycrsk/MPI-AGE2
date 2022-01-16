@@ -4,31 +4,66 @@ min_version("6.10.0")
 
 configfile: "config/config.yaml"
 
-rule Units_file:
+# Load Samples ----------------------------------------------------------------
+
+import pandas as pd
+# getting the samples information (names, path to r1 & r2) from samples.txt
+samples_information = pd.read_csv("config/samples.tsv", sep='\t', index_col=False)
+# get a list of the sample names
+sample_names = list(samples_information['sample_name'])
+
+#Rules -----------------------------------------------------------------------
+
+rule all:
     input:
-        "config/samples.tsv"
+#        expand("done__{srr}_dump", srr=sample_names)
+        expand("{srr}_1.fastq.gz", srr=sample_names),
+        expand("{srr}_2.fastq.gz", srr=sample_names)
+
+rule prefetch:
     output:
-        "config/srr_accession.txt",
-        "config/units.tsv"
-    script:
-        "scripts/2.Units_file.R"
-
-rule sra_download:
-    input:
-        "config/samples.tsv"
+        ".prefetch/sra/{srr}.sra"
+    params:
+#        "{srr} --max-size 50GB"
+#    log:
+#        ".prefetch/sra/{srr}.log"
+#    conda:
+#        "yamls/sra-tools.yaml"
     shell:
-        "fastq-dump --split-files {input} {output}"
+        """
+        prefetch {params} && touch {output}
+        """
+#prefetch {params} > {log} 2>&1 && touch {output}
 
+rule fastqdump:
+    input:
+        ".prefetch/sra/{srr}.sra"
+    output:
+#        touch("done__{srr}_dump")
+        touch("{srr}_1.fastq.gz"),
+        touch("{srr}_2.fastq.gz")
+    params:
+        args = "--split-files --gzip",
+        id_srr = "{srr}"
+#    log:
+#        "{srr}.log"
+#    conda:
+#        "yamls/sra-tools.yaml"
+    shell:
+        """
+        fastq-dump {params.args} {params.id_srr}
+        """
+#        fasterq-dump --split-files {params.args} {params.id_srr} > {log} 2>&1
 
 
 
 #declare https://github.com/snakemake-workflows/rna-seq-star-deseq2 as a module
-#module rna_seq_star_deseq2:
-#    snakefile:
-#        github("snakemake-workflows/rna-seq-star-deseq2", path="workflow/Snakefile", tag="v1.2.0")
-#    config:
-#        config
+module rna_seq_star_deseq2:
+    snakefile:
+        github("snakemake-workflows/rna-seq-star-deseq2", path="workflow/Snakefile", tag="v1.2.0")
+    config:
+        config
 
 
 #use all rules from https://github.com/snakemake-workflows/rna-seq-star-deseq2
-#use rule * from rna_seq_star_deseq2
+use rule * from rna_seq_star_deseq2

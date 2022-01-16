@@ -1,2 +1,0 @@
-SyntaxError in line 31 of /home/plycrsk/PhD/MPI-AGE2/RNA_AB_Diversity_Analysis/snakemake-tutorial/Snakefile:
-Unexpected keyword fa in rule definition (Snakefile, line 31)
