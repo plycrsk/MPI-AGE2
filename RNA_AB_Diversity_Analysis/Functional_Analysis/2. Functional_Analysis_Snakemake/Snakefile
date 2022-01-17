@@ -1,0 +1,50 @@
+ORDERS = ["Q0.00","Q1.00","Q1.50","Q2.00","Q3.00","Q4.00"]
+
+#configfile: "config.yaml"
+
+rule all:
+    input:
+        "plots/gut_gsea_robust.csv",
+        "plots/gut_gsea_top_pos.png",
+        "plots/gut_gsea_top_neg.png",
+        "plots/gut_gsea_all_pos.png",
+        "plots/gut_gsea_all_neg.png"
+
+rule DESeq:
+    input:
+        "raw_data/rna_data_raw_counts.csv",
+        "raw_data/meta_data_{diversity}.csv"
+    output:
+        "data/DESeq/{diversity}.csv"
+    script:
+        "scripts/1.DESeq2_Analysis.R"
+
+rule GSEA:
+    input:
+        "data/DESeq/{diversity}.csv",
+        "raw_data/killifish_human_ortho.csv"
+    output:
+        "data/GSEA/{diversity}.rda",
+        "data/GSEA/{diversity}.csv"
+    script:
+        "scripts/2.GSEA_Analysis.R"
+
+rule Immune_Term_Reduction:
+    input:
+        "data/GSEA/{diversity}.csv"
+    output:
+        "data/GSEA_reduction/{diversity}.csv"
+    script:
+        "scripts/3.GO_Term_Reduction.R"
+
+rule GSEA_plots:
+    input:
+        expand("data/GSEA_reduction/{diversity}.csv", diversity=ORDERS)
+    output:
+        robust = "plots/gut_gsea_robust.csv",
+        top_pos = "plots/gut_gsea_top_pos.png",
+        top_neg = "plots/gut_gsea_top_neg.png",
+        all_pos = "plots/gut_gsea_all_pos.png",
+        all_neg = "plots/gut_gsea_all_neg.png"
+    script:
+        "scripts/4.Make_gsea_plots.R"

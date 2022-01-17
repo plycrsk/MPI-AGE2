@@ -1,0 +1,15 @@
+"","sample_name","unit_name","fq1","fq2","sra","adapters","strandedness"
+"1","SRR5344335","lane1","SRR5344335_pass_1.fastq.gz","SRR5344335_pass_2.fastq.gz","SRR5344335",NA,NA
+"2","SRR5344336","lane1","SRR5344336_pass_1.fastq.gz","SRR5344336_pass_2.fastq.gz","SRR5344336",NA,NA
+"3","SRR5344337","lane1","SRR5344337_pass_1.fastq.gz","SRR5344337_pass_2.fastq.gz","SRR5344337",NA,NA
+"4","SRR5344338","lane1","SRR5344338_pass_1.fastq.gz","SRR5344338_pass_2.fastq.gz","SRR5344338",NA,NA
+"5","SRR5344340","lane1","SRR5344340_pass_1.fastq.gz","SRR5344340_pass_2.fastq.gz","SRR5344340",NA,NA
+"6","SRR5344341","lane1","SRR5344341_pass_1.fastq.gz","SRR5344341_pass_2.fastq.gz","SRR5344341",NA,NA
+"7","SRR5344342","lane1","SRR5344342_pass_1.fastq.gz","SRR5344342_pass_2.fastq.gz","SRR5344342",NA,NA
+"8","SRR5344343","lane1","SRR5344343_pass_1.fastq.gz","SRR5344343_pass_2.fastq.gz","SRR5344343",NA,NA
+"9","SRR5344344","lane1","SRR5344344_pass_1.fastq.gz","SRR5344344_pass_2.fastq.gz","SRR5344344",NA,NA
+"10","SRR5344345","lane1","SRR5344345_pass_1.fastq.gz","SRR5344345_pass_2.fastq.gz","SRR5344345",NA,NA
+"11","SRR5344347","lane1","SRR5344347_pass_1.fastq.gz","SRR5344347_pass_2.fastq.gz","SRR5344347",NA,NA
+"12","SRR5344348","lane1","SRR5344348_pass_1.fastq.gz","SRR5344348_pass_2.fastq.gz","SRR5344348",NA,NA
+"13","SRR5344349","lane1","SRR5344349_pass_1.fastq.gz","SRR5344349_pass_2.fastq.gz","SRR5344349",NA,NA
+"14","SRR5344350","lane1","SRR5344350_pass_1.fastq.gz","SRR5344350_pass_2.fastq.gz","SRR5344350",NA,NA
