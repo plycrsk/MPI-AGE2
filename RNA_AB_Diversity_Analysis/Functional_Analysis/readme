@@ -1,0 +1,48 @@
+################################################################################
+
+1. Accession Download and STAR Mapping
+
+################################################################################
+
+
+1.1 Give that mamba is installed, run
+
+mamba create -c bioconda -c conda-forge --name snakemake snakemake snakedeploy
+
+1.2 activate environment with
+
+conda activate snakemake
+
+1.3 Enter project directory/STAR_Mapping:
+
+cd path/to/project-workdir/STAR_Mapping
+
+1.4 Run
+
+snakedeploy deploy-workflow https://github.com/snakemake-workflows/rna-seq-star-deseq2 . --tag v1.2.0
+
+1.5 Replace snakefile at workflow/snakefile with snakefile
+
+1.6 Add samples to config/samples.tsv and sequencing units to config/units.tsv
+
+1.7 Modify config/config.yaml to your needs
+
+1.8 Run the following code to run pipeline only up until count matrix generation
+
+snakemake -c1 --until count_matrix
+
+################################################################################
+
+2. Functional Analysis
+
+################################################################################
+
+2.1 Enter project directory/Functional_Analysis
+
+cd path/to/project-workdir/Functional Analysis
+
+2.2 Add required files to raw_data/
+
+2.3 Run
+
+snakemake -c1
