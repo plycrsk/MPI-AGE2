@@ -12,13 +12,20 @@ samples_information = pd.read_csv("config/samples.tsv", sep='\t', index_col=Fals
 # get a list of the sample names
 sample_names = list(samples_information['sample_name'])
 
+ORDERS = ["Q0.00","Q1.00","Q1.50","Q2.00","Q3.00","Q4.00"]
+
 #Rules -----------------------------------------------------------------------
 
 rule all:
     input:
-#        expand("done__{srr}_dump", srr=sample_names)
         expand("{srr}_1.fastq.gz", srr=sample_names),
-        expand("{srr}_2.fastq.gz", srr=sample_names)
+        expand("{srr}_2.fastq.gz", srr=sample_names),
+        "results/counts/all.tsv",
+        "plots/gut_gsea_robust.csv",
+        "plots/gut_gsea_top_pos.png",
+        "plots/gut_gsea_top_neg.png",
+        "plots/gut_gsea_all_pos.png",
+        "plots/gut_gsea_all_neg.png"
 
 rule prefetch:
     output:
@@ -55,6 +62,8 @@ rule fastqdump:
         """
 #        fasterq-dump --split-files {params.args} {params.id_srr} > {log} 2>&1
 
+
+
 #declare https://github.com/snakemake-workflows/rna-seq-star-deseq2 as a module
 module rna_seq_star_deseq2:
     snakefile:
@@ -63,6 +72,46 @@ module rna_seq_star_deseq2:
     config:
         config
 
-
 #use all rules from https://github.com/snakemake-workflows/rna-seq-star-deseq2
 use rule * from rna_seq_star_deseq2
+
+#configfile: "config.yaml"
+
+rule DESeq:
+    input:
+        "results/counts/all.tsv",
+        "raw_data/meta_data_{diversity}.csv"
+    output:
+        "data/DESeq/{diversity}.csv"
+    script:
+        "scripts/1.DESeq2_Analysis.R"
+
+rule GSEA:
+    input:
+        "data/DESeq/{diversity}.csv",
+        "raw_data/killifish_human_ortho.csv"
+    output:
+        "data/GSEA/{diversity}.rda",
+        "data/GSEA/{diversity}.csv"
+    script:
+        "scripts/2.GSEA_Analysis.R"
+
+rule Immune_Term_Reduction:
+    input:
+        "data/GSEA/{diversity}.csv"
+    output:
+        "data/GSEA_reduction/{diversity}.csv"
+    script:
+        "scripts/3.GO_Term_Reduction.R"
+
+rule GSEA_plots:
+    input:
+        expand("data/GSEA_reduction/{diversity}.csv", diversity=ORDERS)
+    output:
+        robust = "plots/gut_gsea_robust.csv",
+        top_pos = "plots/gut_gsea_top_pos.png",
+        top_neg = "plots/gut_gsea_top_neg.png",
+        all_pos = "plots/gut_gsea_all_pos.png",
+        all_neg = "plots/gut_gsea_all_neg.png"
+    script:
+        "scripts/4.Make_gsea_plots.R"

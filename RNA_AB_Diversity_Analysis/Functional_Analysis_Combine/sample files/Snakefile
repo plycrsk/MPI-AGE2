@@ -55,6 +55,8 @@ rule fastqdump:
         """
 #        fasterq-dump --split-files {params.args} {params.id_srr} > {log} 2>&1
 
+
+
 #declare https://github.com/snakemake-workflows/rna-seq-star-deseq2 as a module
 module rna_seq_star_deseq2:
     snakefile:
@@ -62,7 +64,6 @@ module rna_seq_star_deseq2:
         github("plycrsk/rna-seq-star-deseq2", path="workflow/Snakefile", branch="master")
     config:
         config
-
 
 #use all rules from https://github.com/snakemake-workflows/rna-seq-star-deseq2
 use rule * from rna_seq_star_deseq2
