@@ -7,14 +7,16 @@ library(tidyverse)
 library(stringr)
 library(dplyr)
 
+set.seed(888888)
+
 ## Note: replace diversity order, e.g. Q2.00, with desired diversity order ##
 ## throughout this R code                                                  ##
 
-data <- read.csv(snakemake@input[[1]])
+data <- read.csv("Output/DiffExp_age_plus_div_Q0.00.csv")
 
 colnames(data)[1] <- "gene"
 
-ortho <- read.csv(snakemake@input[[2]])
+ortho <- read.csv("killifish_human_ortho.csv")
 
 ## mapping killifish transcripts to human orthologues ## 
 
@@ -65,7 +67,7 @@ gseaGO <-gseGO(
 )
 
 gseaGO_results <- gseaGO@result
-save(gseaGO, file = snakemake@output[[1]])
+save(gseaGO, file = "Output/GSEA_analysis/GSEA_Q0.00.rda")
 
 gsea_simple <- clusterProfiler::simplify(
   gseaGO,
@@ -76,4 +78,4 @@ gsea_simple <- clusterProfiler::simplify(
 )
 
 gsea_simple_results <- gsea_simple@result
-write.csv(gsea_simple_results, snakemake@output[[2]])
+write.csv(gsea_simple_results, "Output/GSEA_analysis/GSEA_Q0.00.csv")
