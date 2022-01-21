@@ -1,0 +1,68 @@
+,tg_ecotypeid,name,CS_number,country,latitude,longitude,collector,seq_by,Soil Mapping Unit,Unnamed: 9,TCE,SCE
+2,9606.0,Aitba-1,CS76649,MAR,31.48,-7.45,0,Monsanto,1947,Leptosols,0.1,0.1
+3,6989.0,Alst-1,CS76432,UK,54.8,-2.4333,Maarten Koornneef,Salk,10742,Gleysols,0.1,0.1
+4,9758.0,Altai-5,CS76433,CHN,47.75,88.4,0,Salk,11233,Calcisols,0.5,0.4
+8,7014.0,Ba-1,CS76441,UK,56.5459,-4.79821,Albert Kranz,Salk,10828,Histosols,0.1,0.1
+10,9613.0,Balan-1,CS76687,RUS,55.36,61.41,0,Monsanto,7472,Chernozems,0.1,0.1
+11,9935.0,BAU-15,CS76694,FRA,50.6,2.93,0,Monsanto,9292,Fluvisols,1.6,1.5
+15,9622.0,Bijisk-4,CS76707,RUS,52.52,85.27,0,Monsanto,8504,Fluvisols,0.1,0.1
+16,9761.0,Bik-1,CS76449,LBN,33.92,35.7,0,Salk,3498,Calcisols,0.3,0.3
+19,9661.0,Cimin-1,CS76771,ITA,39.58,16.21,0,Monsanto,9833,Cambisols,0.1,0.1
+20,7077.0,Co-1,CS76468,POR,40.12,-8.25,Albert Kranz,Salk,10296,Cambisols,0.1,0.1
+22,7067.0,Ct-1,CS76786,ITA,37.3,15.0,Albert Kranz,Mott,9823,Regosols,0.1,0.1
+23,6911.0,Cvi-0,CS76789,CPV,15.1111,-23.6167,Albert Kranz,Salk,1875,Leptosols,0.7,1.6
+26,6913.0,Eden-2,CS76827,SWE,62.877,18.177,Magnus Nordborg,GMI,10075,Podzols,0.1,0.1
+29,9725.0,Epidauros-1,CS76844,GRC,37.6,23.08,0,Monsanto,9322,Leptosols,0.1,0.1
+30,9762.0,Etna-2,CS76487,ITA,37.69,14.98,0,Salk,9822,Regosols,0.1,0.1
+31,9726.0,Faneronemi-3,CS76853,GRC,37.07,22.04,0,Monsanto,9313,Fluvisols,0.1,0.1
+32,6919.0,Ga-0,CS76490,GER,50.3,8.0,Albert Kranz,Salk,10230,Cambisols,0.1,0.1
+33,7158.0,Gr-5,CS76885,AUT,47.0,15.5,Albert Kranz,Monsanto,10002,Luvisols,0.1,0.1
+34,7164.0,Hau-0,CS76915,DEN,55.675,12.5686,Albert Kranz,Salk,10017,Luvisols,0.1,0.1
+35,9402.0,Hel-3,CS76918,SWE,57.8765,14.8549,Alison Anastasio,GMI,10052,Regosols,0.1,0.1
+37,9518.0,IP-Alm-0,CS76660,ESP,39.88,-0.36,Carlos Alonso-Blanco,Monsanto,9730,Regosols,0.1,0.1
+38,9522.0,IP-Bea-0,CS76695,ESP,36.52,-5.27,Carlos Alonso-Blanco,Monsanto,9731,Cambisols,0.1,0.1
+39,9827.0,IP-Bos-0,CS76719,ESP,42.78,0.69,Xavier Picó,Monsanto,9739,Cambisols,0.1,0.1
+40,9837.0,IP-Con-0,CS76780,ESP,37.94,-5.6,Xavier Picó,Monsanto,9714,Luvisols,0.1,0.1
+41,9841.0,IP-Ees-0,CS76836,ESP,40.59,-4.15,Carlos Alonso-Blanco,Monsanto,9696,Regosols,0.1,0.1
+42,9547.0,IP-Hor-0,CS76930,ESP,41.67,2.62,Xavier Picó,Monsanto,9732,Regosols,0.1,0.1
+43,9510.0,IP-Rei-0,CS77208,POR,38.75,-7.59,Carlos Alonso-Blanco,Monsanto,9743,Regosols,0.1,0.1
+44,9574.0,IP-Rel-0,CS77209,ESP,38.6,-2.7,Carlos Alonso-Blanco,Monsanto,9742,Regosols,0.1,0.1
+45,9890.0,IP-Rib-1,CS77217,ESP,43.16,-5.07,Carlos Alonso-Blanco,Monsanto,9676,Leptosols,0.1,0.1
+46,9583.0,IP-Sne-0,CS77258,ESP,37.09,-3.38,Carlos Alonso-Blanco,Monsanto,9731,Cambisols,0.1,0.1
+47,9585.0,IP-Svi-0,CS77287,ESP,43.4,-7.39,Carlos Alonso-Blanco,Monsanto,9680,Leptosols,0.1,0.1
+49,9593.0,IP-Vaz-0,CS78836,ESP,42.26,-2.99,Carlos Alonso-Blanco,Monsanto,9697,Cambisols,0.1,0.1
+50,9598.0,IP-Vim-0,CS78844,ESP,41.88,-6.51,Carlos Alonso-Blanco,Monsanto,9698,Cambisols,0.1,0.1
+51,9600.0,IP-Vis-0,CS78848,ESP,39.85,-6.04,Carlos Alonso-Blanco,Monsanto,9744,Regosols,0.1,0.1
+53,10006.0,Kastel-1,CS76395,UKR,44.6419,34.3814,James Beck,MPI,7362,Cambisols,0.1,0.1
+54,8238.0,Kent,CS76967,UK,51.15,0.4,Magnus Nordborg,Salk,10772,Cambisols,0.1,0.1
+57,6926.0,Kin-0,CS76527,USA,44.46,-85.37,Albert Kranz,Salk,4979,Podzols,0.1,0.1
+59,9416.0,Kru-3,CS76986,SWE,57.7215,18.3837,Alison Anastasio,GMI,10061,Cambisols,0.1,0.1
+60,6931.0,Kz-9,CS76537,KAZ,49.5,73.1,Ihsan Al-Shehbaz,Salk,27988,Kastanozems,1.2,2.2
+61,6932.0,Ler-1,CS77021,GER,47.984,10.8719,Eric Holub,MPI+GMI,10725,Cambisols,0.1,0.1
+63,7255.0,Mh-0,CS76550,POL,50.95,20.5,Albert Kranz,Salk,10154,Cambisols,0.1,0.1
+64,8337.0,Mir-0,CS76551,ITA,44.0,12.37,Albert Kranz,Salk,9824,Cambisols,0.1,0.1
+65,6938.0,Ms-0,CS76555,RUS,55.7522,37.6322,Albert Kranz,Salk,7685,Podzoluvisols,0.1,0.1
+66,8246.0,NC-6,CS77124,USA,35.0,-79.18,Joy Bergelson,Salk,4596,Acrisols,0.1,0.1
+67,9993.0,Nemrut-1,CS76398,TUR,38.6425,42.2394,James Beck,MPI,3122,Leptosols,0.8,1.0
+68,772.0,Neo-6,CS76560,TJK,37.35,72.4667,Olivier Loudet,Salk,27911,Leptosols,0.3,0.3
+69,9727.0,Olympia-2,CS77144,GRC,37.63,21.62,0,Monsanto,9337,Luvisols,0.1,0.1
+70,8351.0,Ost-0,CS77154,SWE,60.25,18.37,Albert Kranz,GMI,10065,Cambisols,0.1,0.1
+72,7287.0,Ove-0,CS76569,GER,53.3422,8.42255,Albert Kranz,Salk,10185,Fluvisols,0.1,0.1
+74,8354.0,Per-1,CS76571,RUS,58.0,56.3167,Albert Kranz,Salk,7672,Podzoluvisols,0.1,0.1
+75,7296.0,Petergof,CS77170,RUS,59.0,29.0,Igor Vizir,Monsanto,7822,Podzoluvisols,0.1,0.1
+76,9764.0,Qar-8a,CS76581,LBN,34.1,35.84,0,Salk,3532,Luvisols,0.1,0.2
+77,7514.0,RRS-7,CS76593,USA,41.5609,-86.4251,Joy Bergelson,Salk,4718,Phaeozems,0.1,0.1
+78,6961.0,Se-0,CS76597,ESP,38.3333,-3.53333,Albert Kranz,Salk,9696,Regosols,0.1,0.1
+81,6108.0,T480,CS77300,SWE,55.7989,13.1206,Mattias Jakobsson,GMI,10027,Cambisols,0.1,0.1
+83,6968.0,Tamm-2,CS76610,FIN,60.0,23.5,Outi Savolainen,Salk,10412,Podzols,0.1,0.1
+86,7354.0,Ting-1,CS76612,SWE,56.5,14.9,Maarten Koornneef,Salk,10041,Podzols,0.1,0.1
+88,1254.0,Tos-82-387,CS77379,SWE,59.4333,17.0167,Jon Ågren,GMI,10064,Cambisols,0.1,0.1
+89,6243.0,Tottarp-2,CS77381,SWE,56.27373,13.90045,Magnus Nordborg,GMI,10036,Cambisols,0.1,0.1
+90,6973.0,Ull2-3,CS78817,SWE,56.0648,13.9707,Magnus Nordborg,GMI,10035,Regosols,0.1,0.1
+91,9755.0,Vajug-1,CS78828,SRB,44.56,22.56,0,Monsanto,10552,Luvisols,0.1,0.1
+92,7383.0,Van-0,CS76623,CAN,49.2655,-123.206,Albert Kranz,Salk,3371,Gleysols,0.1,0.1
+93,9991.0,Vash-1,CS76391,GEO,41.2381,46.3728,James Beck,MPI,28045,Cambisols,0.3,0.4
+94,6981.0,Ws-2,CS78920,RUS,52.3,30.0,Kenneth Feldmann,MPI,7688,Podzoluvisols,0.1,0.1
+95,9128.0,Yeg-2,CS78864,ARM,39.8692,45.3622,James Beck,Monsanto,28048,Chernozems,0.3,0.4
+96,768.0,Zal-1,CS76634,KGZ,42.8,76.35,Olivier Loudet,Salk,27918,Leptosols,0.2,0.2
+98,7418.0,Zu-1,CS78881,SUI,47.3667,8.55,Albert Kranz,Monsanto,7004,Histosols,0.1,0.1
