@@ -29,3 +29,5 @@
 *.fastq
 *.fasta
 *.sra
+*.fa
+*.FA
